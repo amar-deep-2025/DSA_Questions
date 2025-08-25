@@ -23,6 +23,13 @@ public class ReverseList{
         System.out.print(a.val+"->");
        
     }
+    public static Node reverseNode(Node head){
+        if (head.next!=null) return head;
+        Node newhead=reverseNode(head.next);
+        head.next.next=head;//interchanging the connections
+        head.next = null; //pont head to null after changing connections
+        return newhead;
+    }
     
     public static void main(String[] args) {
         Node a=new Node(3);
@@ -49,5 +56,9 @@ public class ReverseList{
         System.out.println("             Reverse Linked List            ");
         rec_display(a);
         System.out.print("null");
+        Node r=reverseNode(a);
+        System.out.println("               with Connection reverse Linked List");
+        display(r);
+
     }
 }
